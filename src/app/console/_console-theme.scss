@@ -1,0 +1,41 @@
+@use '@angular/material' as mat;
+
+@mixin ovt-console-theme($theme) {
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
+
+  ovt-console { 
+    .ovt-console {
+      background-color: mat.get-color-from-palette($background, dialog);
+    }
+
+    .ovt-error-entry {
+      background-color: mat.get-color-from-palette($warn, 50);
+    }
+
+    .ovt-error-entry .message,
+    .ovt-error-entry .icon {
+      color: mat.get-color-from-palette($warn, 900);
+    }
+
+    .info-button mat-icon {
+      color: mat.get-color-from-palette($primary, 900);
+    }
+
+    .error-button mat-icon {
+      color: mat.get-color-from-palette($warn, 900);
+    }
+
+    .info-button.active,
+    .error-button.active {
+      background-color: mat.get-color-from-palette($background, status-bar);
+    }
+  }
+}
+
+@mixin ovt-console-typography($config) {
+  ovt-console .ovt-error-entry {
+    @include mat.typography-level($config, 'code');
+  }
+}

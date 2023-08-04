@@ -1,0 +1,14 @@
+<div class="ovt-footer">
+  <mat-toolbar>
+    <ovt-status-info [status]="status"></ovt-status-info>
+
+    <span class="spacer"></span>
+
+    <div class="console-pane">
+      <button mat-raised-button (click)="toggleConsole()" [disabled]="disabled"
+        matBadge="!" [matBadgeHidden]="badgeHidden" matBadgeColor="warn">
+        Console
+      </button>
+    </div>
+  </mat-toolbar>
+</div>

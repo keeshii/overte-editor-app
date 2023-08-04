@@ -1,0 +1,74 @@
+
+$min-app-height: 200px;
+
+.ovt-app {
+  display: flex;
+  flex-direction: column;
+  min-height: $min-app-height;
+  height: 100%;
+  width: 100%;
+}
+
+ovt-toolbar {
+  flex: 0 0 auto;
+}
+
+.ovt-body {
+  display: flex;
+  flex: 1 1;
+  flex-direction: row;
+  overflow: hidden;
+  position: relative;
+}
+
+mat-progress-bar {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+ovt-editor {
+  display: block;
+  flex: 1 1;
+  height: 100%;
+  width: 100%;
+}
+
+ovt-console {
+  display: none;
+  flex: 1 1;
+  height: 100%;
+  width: 50%;
+}
+
+ovt-footer {
+  flex: 0 0 auto;
+}
+
+.console-opened {
+  ovt-editor {
+    width: 50%;
+  }
+
+  ovt-console {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  ovt-editor {
+    width: 100%;
+  }
+  
+  ovt-console {
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+}

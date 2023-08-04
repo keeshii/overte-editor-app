@@ -1,0 +1,30 @@
+.ovt-console {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-list {
+  padding: 0;
+}
+
+mat-toolbar {
+  flex: 0 0;
+}
+
+mat-toolbar > button {
+  margin-right: 8px;
+}
+
+mat-toolbar > button:last-child {
+  margin-right: 0;
+}
+
+.ovt-console-body {
+  flex: 1 1;
+  overflow: auto;
+}
+
+.spacer {
+  flex: 1 1;
+}

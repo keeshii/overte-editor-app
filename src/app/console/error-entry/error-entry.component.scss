@@ -1,0 +1,24 @@
+.ovt-error-entry {
+  align-items: top;
+  display: flex;
+  padding: 8px;
+}
+
+.icon {
+  flex: 0 0;
+}
+
+.message {
+  flex: 1 1;
+  margin: 0 8px;
+  white-space: pre-wrap;
+}
+
+.position {
+  flex: 0 0;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: underline;
+}

@@ -1,0 +1,6 @@
+<div class="ovt-editor" [ngSwitch]="editor">
+
+  <ovt-monaco-editor *ngSwitchCase="'monaco'" [disabled]="disabled"></ovt-monaco-editor>
+  <ovt-textarea-editor *ngSwitchDefault [disabled]="disabled"></ovt-textarea-editor>
+
+</div>

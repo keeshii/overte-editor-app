@@ -1,0 +1,19 @@
+@import '../app/shared/textarea-editor/_textarea-editor-theme.scss';
+@import '../app/shared/monaco-editor/_monaco-editor-theme.scss';
+@import '../app/console/_console-theme.scss';
+@import '../app/footer/status-info/_status-info-theme.scss';
+@import '../app/toolbar/_toolbar-theme.scss';
+
+@mixin ovt-theme($theme) {
+  @include ovt-textarea-theme($theme);
+  @include  ovt-monaco-editor-theme($theme);
+  @include ovt-console-theme($theme);
+  @include ovt-status-info-theme($theme);
+  @include ovt-toolbar-theme($theme);
+}
+
+@mixin ovt-typography($config) {
+  @include ovt-textarea-typography($config);
+  @include ovt-console-typography($config);
+  @include ovt-status-info-typography($config);
+}

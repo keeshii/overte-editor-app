@@ -1,0 +1,9 @@
+@use '@angular/material' as mat;
+
+@mixin ovt-monaco-editor-theme($theme) {
+  $warn: map-get($theme, warn);
+
+  ngx-monaco-editor .ovt-error-line {
+    background-color: mat.get-color-from-palette($warn, 500, 0.54);
+  }
+}

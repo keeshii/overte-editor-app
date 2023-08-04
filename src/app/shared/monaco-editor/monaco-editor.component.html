@@ -1,0 +1,10 @@
+<div class="ovt-monaco-editor">
+
+  <ngx-monaco-editor
+    [options]="editorOptions"
+    [(ngModel)]="content"
+    (ngModelChange)="onChange($event)"
+    (onInit)="onEditorInit($event)">
+  </ngx-monaco-editor>
+
+</div>

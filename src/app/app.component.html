@@ -1,0 +1,13 @@
+<div class="ovt-app" [class.console-opened]="consoleOpened">
+
+  <ovt-toolbar></ovt-toolbar>
+  
+  <div class="ovt-body">
+    <mat-progress-bar color="accent" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+    <ovt-editor [disabled]="!initialized"></ovt-editor>
+    <ovt-console></ovt-console>
+  </div>
+
+  <ovt-footer></ovt-footer>
+
+</div>

@@ -1,0 +1,11 @@
+<div class="ovt-error-entry">
+  <div class="icon">
+    <mat-icon>cancel</mat-icon>
+  </div>
+  <div class="message">
+    <div>{{ error.items.length ? error.items[0] : '' }}</div>
+  </div>
+  <div class="position" *ngIf="error.line">
+    <a (click)="goToError()">:{{ error.line }}:{{ error.col }}</a>
+  </div>
+</div>

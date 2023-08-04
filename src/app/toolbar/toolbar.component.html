@@ -1,0 +1,20 @@
+<div class="ovt-toolbar">
+  <mat-toolbar color="primary">
+    <button mat-button [disabled]="disabled" (click)="save()">
+      <mat-icon>save</mat-icon>
+      <span>Save</span>
+    </button>
+    <button mat-button [disabled]="disabled" (click)="reload()">
+      <mat-icon>refresh</mat-icon>
+      <span>Reload</span>
+    </button>
+    <button mat-button [disabled]="disabled" (click)="run()">
+      <mat-icon>play_arrow</mat-icon>
+      <span>Run</span>
+    </button>
+    <div class="ovt-filename">{{ fileName }}</div>
+    <button mat-icon-button [disabled]="disabled" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>

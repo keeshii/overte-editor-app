@@ -1,0 +1,27 @@
+.ovt-status-info {
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
+
+.status-label {
+  margin-right: 8px;
+  min-width: 200px;
+  padding: 8px;
+  position: relative;
+}
+
+mat-progress-bar {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.stopped mat-progress-bar {
+  display: none;
+}
+
+.stopped button {
+  display: none;
+}

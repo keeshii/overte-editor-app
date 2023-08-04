@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+
+@mixin ovt-toolbar-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  ovt-toolbar {
+    .mat-mdc-icon-button[disabled],
+    .mat-mdc-button[disabled] {
+      color: mat.get-color-from-palette($primary, '500-contrast', 0.54);
+    }
+  }
+}

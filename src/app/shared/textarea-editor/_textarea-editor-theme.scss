@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+
+@mixin ovt-textarea-theme($theme) {
+  .ovt-textarea-editor textarea {
+    color: #aaa;
+  }
+}
+
+@mixin ovt-textarea-typography($config) {
+  .ovt-textarea-editor textarea {
+    @include mat.typography-level($config, 'code');
+  }
+}
