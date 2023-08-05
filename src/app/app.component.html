@@ -2,10 +2,14 @@
 
   <ovt-toolbar></ovt-toolbar>
   
-  <div class="ovt-body">
-    <mat-progress-bar color="accent" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+  <div class="ovt-body" *ngIf="initialized">
     <ovt-editor [disabled]="!initialized"></ovt-editor>
     <ovt-console></ovt-console>
+  </div>
+
+  <div class="ovt-body" *ngIf="!initialized">
+    <mat-progress-bar color="accent" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+    <div class="ovt-placeholder" (click)="!loading && refreshState()"></div>
   </div>
 
   <ovt-footer></ovt-footer>
