@@ -1,8 +1,8 @@
 import { Injectable, NgZone } from '@angular/core';
-import { Observable, catchError, filter, map, of, take, timeout } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Bridge, BridgeEvent } from './bridge/bidge.interface';
 import { MockBridge } from './bridge/mock-bridge';
-import { Action, ActionType, SetStateAction } from '../session/actions';
+import { Action } from '../session/actions';
 import { WebsocketBridge } from './bridge/websocket-bridge';
 import { OverteEventBridge } from './bridge/overte-event-bridge';
 import { environment } from "../../../environments/environment";

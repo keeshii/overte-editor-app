@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../api/api.service';
 import { EditorService } from '../session/editor.service';
@@ -9,7 +9,7 @@ import { SessionService } from '../session/session.service';
   templateUrl: './textarea-editor.component.html',
   styleUrls: ['./textarea-editor.component.scss']
 })
-export class TextareaEditorComponent {
+export class TextareaEditorComponent implements OnInit, OnDestroy {
   @Input()
   public disabled = false;
 

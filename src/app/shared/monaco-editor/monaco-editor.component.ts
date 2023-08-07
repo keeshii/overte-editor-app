@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { MarkerSeverity, editor } from 'monaco-editor';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { editor } from 'monaco-editor';
 import { LogItem } from '../session/session.interface';
 import { EditorService } from '../session/editor.service';
 import { SessionService } from '../session/session.service';
@@ -13,7 +13,7 @@ import { SetScrollAction } from '../session/actions';
   templateUrl: './monaco-editor.component.html',
   styleUrls: ['./monaco-editor.component.scss']
 })
-export class MonacoEditorComponent {
+export class MonacoEditorComponent implements OnInit, OnDestroy {
 
   public content = '';
   private readOnly = true;
@@ -27,11 +27,12 @@ export class MonacoEditorComponent {
   private scrollSubject = new Subject<{ top: number, left: number }>();
   private errorDecoration?: editor.IEditorDecorationsCollection;
 
-  public editorOptions: any = {
+  public editorOptions = {
     theme: 'vs-dark',
     language: 'javascript',
     atomicLayout: true,
     scrollBeyondLastLine: false,
+    readOnly: false
   };
 
   @Input()
@@ -102,7 +103,7 @@ export class MonacoEditorComponent {
     }
   }
 
-  public onChange(_event: string) {
+  public onChange() {
     if (!this.editorChangeDisabled) {
       this.updateSubject.next();
     }
@@ -151,7 +152,7 @@ export class MonacoEditorComponent {
     this.scrollTop = scrollTop;
     this.scrollLeft = scrollLeft;
     this.editor.setScrollPosition({ scrollTop, scrollLeft });
-  };
+  }
 
   private updateError(error?: LogItem) {
     if (!this.editor) {

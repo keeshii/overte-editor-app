@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SessionService } from '../shared/session/session.service';
 import { LogItem } from '../shared/session/session.interface';
@@ -9,7 +9,7 @@ import { EditorService } from '../shared/session/editor.service';
   templateUrl: './console.component.html',
   styleUrls: ['./console.component.scss']
 })
-export class ConsoleComponent implements OnInit {
+export class ConsoleComponent implements OnInit, OnDestroy {
 
   private logsSubscription?: Subscription;
   private consoleSubscription?: Subscription;

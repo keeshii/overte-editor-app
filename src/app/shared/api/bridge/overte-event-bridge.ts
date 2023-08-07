@@ -3,7 +3,15 @@ import { Bridge, BridgeEvent } from "./bidge.interface";
 import { Action } from "../../session/actions";
 import { NgZone } from "@angular/core";
 
-declare const EventBridge: any;
+interface EventBridgeType {
+  scriptEventReceived: {
+    connect: (fn: (message: string) => void) => void
+    disconnect: (fn: (message: string) => void) => void
+  },
+  emitWebEvent: (message: string) => void;
+}
+
+declare const EventBridge: EventBridgeType;
 
 export class OverteEventBridge implements Bridge {
 
@@ -21,14 +29,14 @@ export class OverteEventBridge implements Bridge {
   }
 
   private handleEventMessage(message: string) {
-    let data: any;
+    let data: Action | undefined = undefined;
     try {
       data = JSON.parse(message.toString());
     } catch (err) {
       // ignore
     }
     if (data && data.type) {
-      this.ngZone.run(() => this.messageSubject.next(data));
+      this.ngZone.run(() => this.messageSubject.next(data as Action));
     }
   }
 

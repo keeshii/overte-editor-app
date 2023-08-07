@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { MonacoEditorComponent } from './monaco-editor.component';
+import { ApiService } from '../api/api.service';
 
 describe('MonacoEditorComponent', () => {
   let component: MonacoEditorComponent;
@@ -8,7 +10,11 @@ describe('MonacoEditorComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MonacoEditorComponent]
+      declarations: [MonacoEditorComponent],
+      providers: [
+        { provide: ApiService, useValue: {} }
+      ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     });
     fixture = TestBed.createComponent(MonacoEditorComponent);
     component = fixture.componentInstance;

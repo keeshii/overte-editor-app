@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Action, UpdateAction } from './actions';
+import { UpdateAction } from './actions';
 import { LogItem } from './session.interface';
 import { Observable, Subject } from 'rxjs';
 import { IPosition } from 'monaco-editor';

@@ -6,10 +6,11 @@ import { Subject, Subscription, debounceTime, delayWhen, filter } from 'rxjs';
 })
 export class ScrollWhenDirective implements OnDestroy {
 
-  private value: any = null;
+  private value: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   private subject = new Subject<boolean>();
   private subscription: Subscription;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Input('ovtScrollWhen') public set scrollWhen(value: any) {
     this.subject.next(value);
     this.value = value;

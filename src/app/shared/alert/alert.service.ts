@@ -26,7 +26,7 @@ export class AlertService {
     return dialog.afterClosed();
   }
 
-  public toast(message: string, duration: number = 3000) {
+  public toast(message: string, duration = 3000) {
     this.snackBar.open(message, '', { duration });
   }
 

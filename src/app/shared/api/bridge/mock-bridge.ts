@@ -12,7 +12,7 @@ export class MockBridge implements Bridge {
     this.message$ = this.messageSubject.asObservable();
   }
 
-  public sendAction(action: Action): void {
+  public sendAction(): void {
     return;
   }
 

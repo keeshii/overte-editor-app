@@ -63,7 +63,7 @@ export class LogErrorAction {
 export class LogInfoAction {
   public readonly type: string = ActionType.LOG_INFO;
   constructor(
-    public items: any[]
+    public items: any[] // eslint-disable-line @typescript-eslint/no-explicit-any
   ) {}
 }
 

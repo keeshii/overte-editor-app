@@ -34,14 +34,14 @@ export class WebsocketBridge implements Bridge {
     });
 
     this.socket.addEventListener("message", (event) => {
-      let data: any;
+      let data: Action | undefined = undefined;
       try {
         data = JSON.parse(event.data);
       } catch (err) {
         // ignore
       }
       if (data && data.type) {
-        this.ngZone.run(() => this.messageSubject.next(data));
+        this.ngZone.run(() => this.messageSubject.next(data as Action));
       }
     });
   }

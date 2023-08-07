@@ -19,6 +19,7 @@ export class SessionService implements SessionGetters {
     return this.subject.value;
   }
 
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   public get(...selectors: ((session: Session) => any)[]): Observable<any> {
     if (selectors.length === 0) {
       return of(null);
@@ -35,6 +36,7 @@ export class SessionService implements SessionGetters {
         return a.every((value: any, index: number) => b[index] === value);
       }));
   }
+  /* eslint-enable @typescript-eslint/no-explicit-any */
 
   public set(change: Partial<Session>): void {
     const session = Object.assign({}, this.subject.value, change);

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ApiService } from '../shared/api/api.service';
 import { Subscription } from 'rxjs';
 import { SessionService } from '../shared/session/session.service';
@@ -9,7 +9,7 @@ import { AlertService } from '../shared/alert/alert.service';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent {
+export class ToolbarComponent implements OnInit, OnDestroy {
 
   public disabled = true;
   public fileName = '';

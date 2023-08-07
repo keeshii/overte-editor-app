@@ -9,11 +9,11 @@ export enum StatusType {
   UNLOADED = 'UNLOADED',
   PENDING = 'PENDING',
   RUNNING = 'RUNNING'
-};
+}
 
 export interface LogItem {
   logType: 'INFO' | 'ERROR',
-  items: any[];
+  items: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
   line?: number;
   col?: number;
 }

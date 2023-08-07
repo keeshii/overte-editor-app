@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs/internal/Subject';
 
 import { ApiService } from './shared/api/api.service';
 import { AlertService } from './shared/alert/alert.service';
@@ -137,7 +136,7 @@ export class AppComponent implements OnDestroy, OnInit {
   private initializeWithTimeout(): Observable<boolean> {
     const observable = this.apiService.message$.pipe(
       filter(action => action.type === ActionType.SET_STATE),
-      map(action => true),
+      map(() => true),
       timeout(5000),
       catchError(() => of(false)),
       take(1)
