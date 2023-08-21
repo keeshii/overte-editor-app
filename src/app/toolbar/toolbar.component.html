@@ -13,7 +13,10 @@
       <span>Run</span>
     </button>
     <div class="ovt-filename">{{ fileName }}</div>
-    <button mat-icon-button [disabled]="disabled" (click)="close()">
+    <button mat-icon-button *ngIf="showOpenInEntity" (click)="openInEntity()">
+      <mat-icon>open_in_new</mat-icon>
+    </button>
+    <button mat-icon-button *ngIf="showClose" (click)="close()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-toolbar>

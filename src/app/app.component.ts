@@ -5,7 +5,7 @@ import { AlertService } from './shared/alert/alert.service';
 import { Observable, Subscription, catchError, filter, map, of, take, timeout } from 'rxjs';
 import {
   ActionType, LogErrorAction, LogInfoAction, SetStateAction, SetFileNameAction,
-  ShowMessageAction, SetScrollAction, SetStatusAction, UpdateAction
+  ShowMessageAction, SetScrollAction, SetStatusAction, UpdateAction, SetToolbarButtonsAction
 } from './shared/session/actions';
 import { SessionService } from './shared/session/session.service';
 import { EditorService } from './shared/session/editor.service';
@@ -48,6 +48,13 @@ export class AppComponent implements OnDestroy, OnInit {
           }
           this.sessionService.set(sessionUpdate);
           this.editorService.clearError();
+        }
+        if (action.type === ActionType.SET_TOOLBAR_BUTTONS) {
+          const setToolbarButtonsAction = action as SetToolbarButtonsAction;
+          this.sessionService.set({
+            showClose: setToolbarButtonsAction.showClose,
+            showOpenInEntity: setToolbarButtonsAction.showOpenInEntity
+          });
         }
         if (action.type === ActionType.SHOW_MESSAGE) {
           const showMessageAction = action as ShowMessageAction;

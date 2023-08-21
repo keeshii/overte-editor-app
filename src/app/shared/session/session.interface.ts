@@ -26,6 +26,8 @@ export class Session {
   status = StatusType.UNLOADED;
   logs: LogItem[] = [];
   consoleOpened = false;
+  showClose = false;
+  showOpenInEntity = false;
 }
 
 export interface SessionGetters {

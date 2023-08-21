@@ -7,6 +7,7 @@ export enum BridgeEvent {
   RUN = 'RUN',
   RELOAD = 'RELOAD',
   CLOSE = 'CLOSE',
+  OPEN_IN_ENTITY = 'OPEN_IN_ENTITY',
   STOP = 'STOP'
 }
 

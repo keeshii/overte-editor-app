@@ -57,6 +57,10 @@ export class ApiService {
     this.bridge.sendEvent(BridgeEvent.CLOSE);
   }
 
+  public openInEntity(): void {
+    this.bridge.sendEvent(BridgeEvent.OPEN_IN_ENTITY);
+  }
+
   public sendAction(action: Action) {
     this.bridge.sendAction(action);
   }

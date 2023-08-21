@@ -9,7 +9,8 @@ export enum ActionType {
   LOG_INFO = 'LOG_INFO',
   UPDATE = 'UPDATE',
   SET_SCROLL = 'SET_SCROLL',
-  SET_SELECTION = 'SET_SELECTION'
+  SET_SELECTION = 'SET_SELECTION',
+  SET_TOOLBAR_BUTTONS = 'SET_TOOLBAR_BUTTONS'
 }
 
 export class SetStateAction {
@@ -75,6 +76,14 @@ export class SetScrollAction {
   ) {}
 }
 
+export class SetToolbarButtonsAction {
+  public readonly type: string = ActionType.SET_TOOLBAR_BUTTONS;
+  constructor(
+    public showClose: boolean,
+    public showOpenInEntity: boolean
+  ) {}
+}
+
 export type Action
   = SetStateAction
   | SetFileNameAction
@@ -83,4 +92,5 @@ export type Action
   | SetStatusAction
   | LogErrorAction
   | LogInfoAction
-  | SetScrollAction;
+  | SetScrollAction
+  | SetToolbarButtonsAction;

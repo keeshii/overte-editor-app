@@ -13,8 +13,12 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
   public disabled = true;
   public fileName = '';
+  public showOpenInEntity = false;
+  public showClose = false;
   private initializedSubscription?: Subscription;
   private fileNameSubscription?: Subscription;
+  private showCloseSubscription?: Subscription;
+  private showOpenInEntitySubscription?: Subscription;
 
   constructor(
     private alertService: AlertService,
@@ -32,6 +36,16 @@ export class ToolbarComponent implements OnInit, OnDestroy {
       .subscribe(initialized => {
         this.disabled = !initialized;
       });
+
+    this.showCloseSubscription = this.sessionService.get(session => session.showClose)
+      .subscribe(showClose => {
+        this.showClose = showClose;
+      });
+
+    this.showOpenInEntitySubscription = this.sessionService.get(session => session.showOpenInEntity)
+      .subscribe(showOpenInEntity => {
+        this.showOpenInEntity = showOpenInEntity;
+      });
   }
 
   ngOnDestroy() {
@@ -40,6 +54,12 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     }
     if (this.initializedSubscription) {
       this.initializedSubscription.unsubscribe();
+    }
+    if (this.showCloseSubscription) {
+      this.showCloseSubscription.unsubscribe();
+    }
+    if (this.showOpenInEntitySubscription) {
+      this.showOpenInEntitySubscription.unsubscribe();
     }
   }
 
@@ -63,6 +83,18 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     ).subscribe(option => {
       if (option === 0) {
         this.apiService.closeEditor();
+      }
+    });
+  }
+
+  public openInEntity() {
+    this.alertService.alert(
+      'Open the editor in a Web Entity? All unsaved changes will be lost.',
+      'Web Entity',
+      ['Continue', 'Cancel']
+    ).subscribe(option => {
+      if (option === 0) {
+        this.apiService.openInEntity();
       }
     });
   }
