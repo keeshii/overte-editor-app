@@ -1,9 +1,6 @@
+import { EDITOR_HEIGHT, EDITOR_SOURCE_URL, EDITOR_WIDTH } from "./constants";
 import { EditorWindowClient } from "./editor-window-client";
 import { EditorUserData } from "./editor.interface";
-
-const EDITOR_SOURCE_URL = 'https://keeshii.github.io/overte-editor-app/';
-const EDITOR_WIDTH = 1.92;
-const EDITOR_HEIGHT = 1.08;
 
 export class EditorWindow {
 
@@ -119,11 +116,13 @@ export class EditorWindow {
       }
     }
 
-    Assets.putAsset({ data: String(content), path: '/' + fileName }, function (error: string) {
+    Assets.putAsset({ data: String(content), path: '/' + fileName }, (error: string) => {
       if (error) {
         Window.alert("Cannot save file to Asset Server");
         return;
       }
+      console.log('EDIT_ENTITY' + this.entityId + (this.isClient ? 'true': 'false'));
+      console.log('FILE_NAME' + fileName);
       Entities.editEntity(this.entityId, this.isClient
         ? { script: 'atp:/' + fileName }
         : { serverScripts: 'atp:/' + fileName } as any);

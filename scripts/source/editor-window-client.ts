@@ -1,7 +1,8 @@
-import { Action } from './action.interface';
 import { ConsoleMonitor } from './console-monitor';
+import { EDITOR_CLIENT_SCRIPT_URL, EDITOR_HEIGHT, EDITOR_SERVER_SCRIPT_URL,
+  EDITOR_SOURCE_URL, EDITOR_WIDTH } from './constants';
 import { Editor } from './editor';
-import { EditorUserData } from './editor.interface';
+import { Action, EditorUserData } from './editor.interface';
 import { ServerScriptStatusMonitor } from './status-monitor';
 
 export class EditorWindowClient {
@@ -84,9 +85,28 @@ export class EditorWindowClient {
         this.editor.stopScript();
         break;
       case 'OPEN_IN_ENTITY':
+        this.spawnEditorEntity();
         (this.window as any).close();
         break;
     }
+  }
+
+  private spawnEditorEntity() {
+    var userData = this.userData;
+    var translation = Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: 0.5, z: -3 });
+    var position = Vec3.sum(MyAvatar.position, translation);
+
+    Entities.addEntity({
+      type: "Web",
+      dpi: 20,
+      position: position,
+      rotation: MyAvatar.orientation,
+      sourceUrl: EDITOR_SOURCE_URL,
+      script: EDITOR_CLIENT_SCRIPT_URL,
+      serverScripts: EDITOR_SERVER_SCRIPT_URL,
+      dimensions: { x: EDITOR_WIDTH, y: EDITOR_HEIGHT, z: 0.01 },
+      userData: JSON.stringify(userData)
+    } as any);
   }
 
   private emitToWebView(action: any) {

@@ -14,6 +14,21 @@ export class Editor {
     this.editingEntityId = params.editingEntityId;
   }
 
+  static parseUserData(entityId: Uuid): EditorUserData {
+    var properties = Entities.getEntityProperties(entityId, ['userData']);
+    var userData;
+    try {
+      userData = JSON.parse(properties.userData);
+    } catch (e) {
+      return;
+    }
+    return {
+      fileName: userData.fileName,
+      scriptType: userData.scriptType,
+      editingEntityId: userData.editingEntityId
+    };
+  };
+
   public applyUpdate(action: UpdateAction): boolean {
     let text = this.content;
     if (action.remove) {

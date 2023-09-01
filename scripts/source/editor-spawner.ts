@@ -1,6 +1,6 @@
 import { EditorWindow } from "./editor-window";
 
-(function () {
+export default (function () {
   var ENTITY_ID_PLACEHOLDER = '{00000000-0000-0000-0000-000000000000}';
 
   // Choose entity
@@ -22,7 +22,7 @@ import { EditorWindow } from "./editor-window";
   }
 
   // Server or Client Script?
-  var isClient = Window.confirm("Yes - client, No -server script");
+  var isClient = Window.confirm("Yes - client, No - server script");
 
   var editor = new EditorWindow(entityId, isClient);
   editor.openEditor();

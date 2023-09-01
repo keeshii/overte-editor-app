@@ -2,7 +2,9 @@ const WrapperPlugin = require('wrapper-webpack-plugin');
 const path = require('path');
 
 const outputFiles = [
-  'editor-spawner'
+  'editor-spawner',
+  'editor-client',
+  'editor-server'
 ];
 
 const configs = [];
@@ -33,7 +35,7 @@ outputFiles.forEach(file => {
       new WrapperPlugin({
         test: /\.js$/, // only wrap output of bundle files with '.js' extension
         header: '((typeof module !== \'undefined\' ? module : {}).exports = function () { var self={};\n',
-        footer: '\nreturn self["default"];})()',
+        footer: '\nreturn self["default"];})' + (file.match(/(client|server)$/) ? ';' : '();'),
         afterOptimizations: true
       })
     ]
