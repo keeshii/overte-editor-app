@@ -22,6 +22,7 @@ export class AppComponent implements OnDestroy, OnInit {
   public initialized = false;
   public loading = false;
   public consoleOpened: boolean;
+  private firstTry = true;
   private messageSubscription?: Subscription;
   private consoleSubscription?: Subscription;
 
@@ -122,6 +123,12 @@ export class AppComponent implements OnDestroy, OnInit {
         if (initialized) {
           this.initialized = initialized;
           this.sessionService.set({ initialized });
+          return;
+        }
+
+        if (this.firstTry) {
+          this.firstTry = false;
+          this.refreshState();
           return;
         }
 
