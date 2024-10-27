@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "build:scripts": "webpack --config scripts/webpack.config.js"
+    "build:scripts": "webpack --config scripts/webpack.config.js",
+    "build:editor": "ng build --configuration=production --base-href=./ && npm run replace",
+    "replace": "sed -i 's@<script src=\"\\([a-z0-9\\\\.]*\\)\" type=\"module\">@<script src=\"./\\1\" type=\"text/javascript\">@g' dist/overte-editor-app/index.html"
   },
   "private": true,
   "dependencies": {
